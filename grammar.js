@@ -11,16 +11,27 @@ module.exports = grammar({
       ),
 
     function_definition: ($) =>
-      seq($.primative_type, $.identifier, $.parameter_list, $.block),
-
-    parameter_list: ($) =>
       seq(
-        "(",
-        // TODO: parameters
-        ")"
+        $._declaration_specifiers,
+        field("declarator", $._declarator),
+        field("body", $.compound_statement)
       ),
 
-    primative_type: ($) =>
+    compound_statement: ($) => seq("{", repeat($._statement), "}"),
+
+    parameter_list: ($) => seq("(", commaSep($.parameter_declaration), ")"),
+
+    parameter_declaration: ($) =>
+      seq(
+        $._declaration_specifiers,
+        optional(field("declarator", $._declarator))
+      ),
+
+    _declaration_specifiers: ($) => seq(field("type", $._type_specifier)),
+
+    _type_specifier: ($) => $.primitive_type,
+
+    primitive_type: ($) =>
       choice(
         "Integer",
         "Real",
@@ -138,8 +149,6 @@ module.exports = grammar({
         "Dynamic_Text"
       ),
 
-    block: ($) => seq("{", repeat($._statement), "}"),
-
     _statement: ($) => choice($.return_statement, $.declaration),
 
     return_statement: ($) => seq("return", $._expression, ";"),
@@ -155,12 +164,22 @@ module.exports = grammar({
 
     number_literal: ($) => /\d+/,
 
-    declaration: ($) => seq($.primative_type, $._declarator, ";"),
+    declaration: ($) => seq($.primitive_type, $._declarator, ";"),
 
     array_declarator: ($) =>
       prec(1, seq($._declarator, "[", $._expression, "]")),
 
-    _declarator: ($) => choice($.array_declarator, $.identifier),
+    function_declarator: ($) =>
+      prec(
+        1,
+        seq(
+          field("declarator", $._declarator),
+          field("parameters", $.parameter_list)
+        )
+      ),
+
+    _declarator: ($) =>
+      choice($.function_declarator, $.array_declarator, $.identifier),
   },
 });
 

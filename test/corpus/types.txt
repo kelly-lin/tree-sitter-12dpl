@@ -17,18 +17,17 @@ Integer main() {
 
 (source_file
   (function_definition
-    (primative_type)
-    (identifier)
-    (parameter_list)
-    (block
-      (declaration (primative_type) (identifier))
-      (declaration (primative_type) (identifier))
-      (declaration (primative_type) (identifier))
-      (declaration (primative_type) (identifier))
-      (declaration (primative_type) (identifier))
-      (declaration (primative_type) (identifier))
-      (declaration (primative_type) (identifier))
-      (declaration (primative_type) (identifier)))))
+    (primitive_type)
+    (function_declarator (identifier) (parameter_list))
+    (compound_statement
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier)))))
 
 ==================================
 Geometric types
@@ -46,17 +45,16 @@ Integer main() {
 ---
 
 (source_file
- (function_definition
-  (primative_type)
-  (identifier)
-  (parameter_list)
-  (block
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier)))))
+  (function_definition
+    (primitive_type)
+    (function_declarator (identifier) (parameter_list))
+    (compound_statement
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier)))))
 
 ==================================
 12d Model database handle types
@@ -73,16 +71,15 @@ Integer main() {
 ---
 
 (source_file
- (function_definition
-  (primative_type)
-  (identifier)
-  (parameter_list)
-  (block
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier)))))
+  (function_definition
+    (primitive_type)
+    (function_declarator (identifier) (parameter_list))
+    (compound_statement
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier)))))
 
 ==================================
 12d Model internal types
@@ -104,21 +101,20 @@ Integer main() {
 ---
 
 (source_file
- (function_definition
-  (primative_type)
-  (identifier)
-  (parameter_list)
-  (block
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier)))))
+  (function_definition
+    (primitive_type)
+    (function_declarator (identifier) (parameter_list))
+    (compound_statement
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier)))))
 
 ==================================
 12d Model interface types
@@ -190,71 +186,70 @@ Integer main() {
 ---
 
 (source_file
- (function_definition
-  (primative_type)
-  (identifier)
-  (parameter_list)
-  (block
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier)))))
+  (function_definition
+    (primitive_type)
+    (function_declarator (identifier) (parameter_list))
+    (compound_statement
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier)))))
 
 ==================================
 File interface types
@@ -271,16 +266,15 @@ Integer main() {
 ---
 
 (source_file
- (function_definition
-  (primative_type)
-  (identifier)
-  (parameter_list)
-  (block
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier)))))
+  (function_definition
+    (primitive_type)
+    (function_declarator (identifier) (parameter_list))
+    (compound_statement
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier)))))
 
 ==================================
 ODBC Database types
@@ -302,21 +296,20 @@ Integer main() {
 ---
 
 (source_file
- (function_definition
-  (primative_type)
-  (identifier)
-  (parameter_list)
-  (block
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier)))))
+  (function_definition
+    (primitive_type)
+    (function_declarator (identifier) (parameter_list))
+    (compound_statement
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier)))))
 
 ==================================
 Dynamic array types
@@ -332,15 +325,14 @@ Integer main() {
 ---
 
 (source_file
- (function_definition
-  (primative_type)
-  (identifier)
-  (parameter_list)
-  (block
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier))
-   (declaration (primative_type) (identifier)))))
+  (function_definition
+    (primitive_type)
+    (function_declarator (identifier) (parameter_list))
+    (compound_statement
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier))
+      (declaration (primitive_type) (identifier)))))
 
 ==================================
 Fixed array types
@@ -353,9 +345,8 @@ Integer main() {
 ---
 
 (source_file
- (function_definition
-  (primative_type)
-  (identifier)
-  (parameter_list)
-  (block
-    (declaration (primative_type) (array_declarator (identifier) (number_literal))))))
+  (function_definition
+    (primitive_type)
+    (function_declarator (identifier) (parameter_list))
+    (compound_statement
+      (declaration (primitive_type) (array_declarator (identifier) (number_literal))))))
