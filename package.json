@@ -1,0 +1,26 @@
+{
+  "name": "tree-sitter-12dpl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bindings/node",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kelly-lin/tree-sitter-12dpl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kelly-lin/tree-sitter-12dpl/issues"
+  },
+  "homepage": "https://github.com/kelly-lin/tree-sitter-12dpl#readme",
+  "dependencies": {
+    "nan": "^2.15.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.1"
+  }
+}

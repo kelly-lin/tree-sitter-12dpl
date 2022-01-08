@@ -1,0 +1,361 @@
+==================================
+Mathematical types
+==================================
+
+Integer main() {
+  Integer a;
+  Real a;
+  Text a;
+  Vector2 a;
+  Vector3 a;
+  Vector4 a;
+  Matrix3 a;
+  Matrix4 a;
+}
+
+---
+
+(source_file
+  (function_definition
+    (primative_type)
+    (identifier)
+    (parameter_list)
+    (block
+      (declaration (primative_type) (identifier))
+      (declaration (primative_type) (identifier))
+      (declaration (primative_type) (identifier))
+      (declaration (primative_type) (identifier))
+      (declaration (primative_type) (identifier))
+      (declaration (primative_type) (identifier))
+      (declaration (primative_type) (identifier))
+      (declaration (primative_type) (identifier)))))
+
+==================================
+Geometric types
+==================================
+
+Integer main() {
+  Point a;
+  Line a;
+  Arc a;
+  Spiral a;
+  Parabola a;
+  Segment a;
+}
+
+---
+
+(source_file
+ (function_definition
+  (primative_type)
+  (identifier)
+  (parameter_list)
+  (block
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier)))))
+
+==================================
+12d Model database handle types
+==================================
+
+Integer main() {
+  Element a;
+  Model a;
+  View a;
+  Macro_Function a;
+  Function a;
+}
+
+---
+
+(source_file
+ (function_definition
+  (primative_type)
+  (identifier)
+  (parameter_list)
+  (block
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier)))))
+
+==================================
+12d Model internal types
+==================================
+
+Integer main() {
+  Uid a;
+  Guid a;
+  Attributes a;
+  SDR_Attribute a;
+  Blob a;
+  Screen_Text a;
+  Textstyle_Data a;
+  Equality_Label a;
+  Undo a;
+  Undo_List a;
+}
+
+---
+
+(source_file
+ (function_definition
+  (primative_type)
+  (identifier)
+  (parameter_list)
+  (block
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier)))))
+
+==================================
+12d Model interface types
+==================================
+
+Integer main() {
+  Widget a;
+  Menu a;
+  Panel a;
+  Overlay_Widget a;
+  Vertical_Group a;
+  Horizontal_Group a;
+  Widget_Pages a;
+  Button a;
+  Select_Button a;
+  Angle_Box a;
+  Attributes_Box a;
+  Billboard_Box a;
+  Bitmap_Fill_Box a;
+  Bitmap_List_Box a;
+  Chainage_Box a;
+  Choice_Box a;
+  Colour_Box a;
+  Colour_Message_Box a;
+  Date_Time_Box a;
+  Directory_Box a;
+  Draw_Box a;
+  File_Box a;
+  Function_Box a;
+  Graph_Box a;
+  GridCtrl_Box a;
+  HyperLink_Box a;
+  Input_Box a;
+  Integer_Box a;
+  Justify_Box a;
+  Linestyle_Box a;
+  List_Box a;
+  ListCtrl_Box a;
+  Map_File_Box a;
+  Message_Box a;
+  Model_Box a;
+  Name_Box a;
+  Named_Tick_Box a;
+  New_Select_Box a;
+  New_XYZ_Box a;
+  Plotter_Box a;
+  Polygon_Box a;
+  Real_Box a;
+  Report_Box a;
+  Select_Box a;
+  Select_Boxes a;
+  Sheet_Size_Box a;
+  Source_Box a;
+  Symbol_Box a;
+  Tab_Box a;
+  Target_Box a;
+  Template_Box a;
+  Text_Edit_Box a;
+  Text_Style_Box a;
+  Texture_Box a;
+  Tree_Box a;
+  Tree_Page a;
+  Tick_Box a;
+  Tin_Box a;
+  View_Box a;
+  XYZ_Box a;
+}
+
+---
+
+(source_file
+ (function_definition
+  (primative_type)
+  (identifier)
+  (parameter_list)
+  (block
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier)))))
+
+==================================
+File interface types
+==================================
+
+Integer main() {
+  File a;
+  Map_File a;
+  Plot_Parameter_File a;
+  XML_Document a;
+  XML_Node a;
+}
+
+---
+
+(source_file
+ (function_definition
+  (primative_type)
+  (identifier)
+  (parameter_list)
+  (block
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier)))))
+
+==================================
+ODBC Database types
+==================================
+
+Integer main() {
+  Connection a;
+  Select_Query a;
+  Insert_Query a;
+  Update_Query a;
+  Delete_Query a;
+  Database_Results a;
+  Transactions a;
+  Parameter_Collection a;
+  Query_Condition a;
+  Manual_Condition a;
+}
+
+---
+
+(source_file
+ (function_definition
+  (primative_type)
+  (identifier)
+  (parameter_list)
+  (block
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier)))))
+
+==================================
+Dynamic array types
+==================================
+
+Integer main() {
+  Dynamic_Element a;
+  Dynamic_Integer a;
+  Dynamic_Real a;
+  Dynamic_Text a;
+}
+
+---
+
+(source_file
+ (function_definition
+  (primative_type)
+  (identifier)
+  (parameter_list)
+  (block
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier))
+   (declaration (primative_type) (identifier)))))
+
+==================================
+Fixed array types
+==================================
+
+Integer main() {
+  Integer a[100];
+}
+
+---
+
+(source_file
+ (function_definition
+  (primative_type)
+  (identifier)
+  (parameter_list)
+  (block
+    (declaration (primative_type) (array_declarator (identifier) (number))))))

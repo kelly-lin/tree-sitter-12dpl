@@ -1,0 +1,630 @@
+{
+  "name": "ProgrammingLanguage12d",
+  "rules": {
+    "source_file": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_definition"
+      }
+    },
+    "_definition": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "function_definition"
+        }
+      ]
+    },
+    "function_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "primative_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "parameter_list"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "block"
+        }
+      ]
+    },
+    "parameter_list": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "primative_type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "Integer"
+        },
+        {
+          "type": "STRING",
+          "value": "Real"
+        },
+        {
+          "type": "STRING",
+          "value": "Text"
+        },
+        {
+          "type": "STRING",
+          "value": "Vector2"
+        },
+        {
+          "type": "STRING",
+          "value": "Vector3"
+        },
+        {
+          "type": "STRING",
+          "value": "Vector4"
+        },
+        {
+          "type": "STRING",
+          "value": "Matrix3"
+        },
+        {
+          "type": "STRING",
+          "value": "Matrix4"
+        },
+        {
+          "type": "STRING",
+          "value": "Point"
+        },
+        {
+          "type": "STRING",
+          "value": "Line"
+        },
+        {
+          "type": "STRING",
+          "value": "Arc"
+        },
+        {
+          "type": "STRING",
+          "value": "Spiral"
+        },
+        {
+          "type": "STRING",
+          "value": "Parabola"
+        },
+        {
+          "type": "STRING",
+          "value": "Segment"
+        },
+        {
+          "type": "STRING",
+          "value": "Element"
+        },
+        {
+          "type": "STRING",
+          "value": "Model"
+        },
+        {
+          "type": "STRING",
+          "value": "View"
+        },
+        {
+          "type": "STRING",
+          "value": "Macro_Function"
+        },
+        {
+          "type": "STRING",
+          "value": "Function"
+        },
+        {
+          "type": "STRING",
+          "value": "Uid"
+        },
+        {
+          "type": "STRING",
+          "value": "Guid"
+        },
+        {
+          "type": "STRING",
+          "value": "Attributes"
+        },
+        {
+          "type": "STRING",
+          "value": "SDR_Attribute"
+        },
+        {
+          "type": "STRING",
+          "value": "Blob"
+        },
+        {
+          "type": "STRING",
+          "value": "Screen_Text"
+        },
+        {
+          "type": "STRING",
+          "value": "Textstyle_Data"
+        },
+        {
+          "type": "STRING",
+          "value": "Equality_Label"
+        },
+        {
+          "type": "STRING",
+          "value": "Undo"
+        },
+        {
+          "type": "STRING",
+          "value": "Undo_List"
+        },
+        {
+          "type": "STRING",
+          "value": "Widget"
+        },
+        {
+          "type": "STRING",
+          "value": "Menu"
+        },
+        {
+          "type": "STRING",
+          "value": "Panel"
+        },
+        {
+          "type": "STRING",
+          "value": "Overlay_Widget"
+        },
+        {
+          "type": "STRING",
+          "value": "Vertical_Group"
+        },
+        {
+          "type": "STRING",
+          "value": "Horizontal_Group"
+        },
+        {
+          "type": "STRING",
+          "value": "Widget_Pages"
+        },
+        {
+          "type": "STRING",
+          "value": "Button"
+        },
+        {
+          "type": "STRING",
+          "value": "Select_Button"
+        },
+        {
+          "type": "STRING",
+          "value": "Angle_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Attributes_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Billboard_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Bitmap_Fill_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Bitmap_List_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Chainage_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Choice_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Colour_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Colour_Message_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Date_Time_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Directory_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Draw_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "File_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Function_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Graph_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "GridCtrl_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "HyperLink_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Input_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Integer_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Justify_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Linestyle_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "List_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "ListCtrl_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Map_File_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Message_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Model_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Name_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Named_Tick_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "New_Select_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "New_XYZ_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Plotter_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Polygon_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Real_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Report_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Select_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Select_Boxes"
+        },
+        {
+          "type": "STRING",
+          "value": "Sheet_Size_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Source_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Symbol_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Tab_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Target_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Template_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Text_Edit_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Text_Style_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Texture_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Tree_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Tree_Page"
+        },
+        {
+          "type": "STRING",
+          "value": "Tick_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "Tin_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "View_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "XYZ_Box"
+        },
+        {
+          "type": "STRING",
+          "value": "File"
+        },
+        {
+          "type": "STRING",
+          "value": "Map_File"
+        },
+        {
+          "type": "STRING",
+          "value": "Plot_Parameter_File"
+        },
+        {
+          "type": "STRING",
+          "value": "XML_Document"
+        },
+        {
+          "type": "STRING",
+          "value": "XML_Node"
+        },
+        {
+          "type": "STRING",
+          "value": "Connection"
+        },
+        {
+          "type": "STRING",
+          "value": "Select_Query"
+        },
+        {
+          "type": "STRING",
+          "value": "Insert_Query"
+        },
+        {
+          "type": "STRING",
+          "value": "Update_Query"
+        },
+        {
+          "type": "STRING",
+          "value": "Delete_Query"
+        },
+        {
+          "type": "STRING",
+          "value": "Database_Results"
+        },
+        {
+          "type": "STRING",
+          "value": "Transactions"
+        },
+        {
+          "type": "STRING",
+          "value": "Parameter_Collection"
+        },
+        {
+          "type": "STRING",
+          "value": "Query_Condition"
+        },
+        {
+          "type": "STRING",
+          "value": "Manual_Condition"
+        },
+        {
+          "type": "STRING",
+          "value": "Dynamic_Element"
+        },
+        {
+          "type": "STRING",
+          "value": "Dynamic_Integer"
+        },
+        {
+          "type": "STRING",
+          "value": "Dynamic_Real"
+        },
+        {
+          "type": "STRING",
+          "value": "Dynamic_Text"
+        }
+      ]
+    },
+    "block": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_statement"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "return_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "declaration"
+        }
+      ]
+    },
+    "return_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "return"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
+    "_expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        }
+      ]
+    },
+    "identifier": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z_]\\w*"
+    },
+    "number": {
+      "type": "PATTERN",
+      "value": "\\d+"
+    },
+    "declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "primative_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_declarator"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
+    "array_declarator": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_declarator"
+          },
+          {
+            "type": "STRING",
+            "value": "["
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_expression"
+          },
+          {
+            "type": "STRING",
+            "value": "]"
+          }
+        ]
+      }
+    },
+    "_declarator": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "array_declarator"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        }
+      ]
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}
+
