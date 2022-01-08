@@ -358,4 +358,4 @@ Integer main() {
   (identifier)
   (parameter_list)
   (block
-    (declaration (primative_type) (array_declarator (identifier) (number))))))
+    (declaration (primative_type) (array_declarator (identifier) (number_literal))))))

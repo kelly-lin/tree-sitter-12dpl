@@ -547,7 +547,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "number"
+          "name": "number_literal"
         }
       ]
     },
@@ -555,7 +555,7 @@
       "type": "PATTERN",
       "value": "[a-zA-Z_]\\w*"
     },
-    "number": {
+    "number_literal": {
       "type": "PATTERN",
       "value": "\\d+"
     },

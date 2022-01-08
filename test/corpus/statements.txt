@@ -1,6 +1,6 @@
-==========
-Statements
-==========
+==================================
+Function Statements
+==================================
 
 Integer get_x() {
   return 1;
@@ -14,4 +14,4 @@ Integer get_x() {
    (identifier)
    (parameter_list)
    (block
-    (return_statement (number)))))
+    (return_statement (number_literal)))))

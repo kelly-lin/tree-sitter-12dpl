@@ -140,7 +140,7 @@ enum {
   anon_sym_return = 113,
   anon_sym_SEMI = 114,
   sym_identifier = 115,
-  sym_number = 116,
+  sym_number_literal = 116,
   anon_sym_LBRACK = 117,
   anon_sym_RBRACK = 118,
   sym_source_file = 119,
@@ -276,7 +276,7 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_return] = "return",
   [anon_sym_SEMI] = ";",
   [sym_identifier] = "identifier",
-  [sym_number] = "number",
+  [sym_number_literal] = "number_literal",
   [anon_sym_LBRACK] = "[",
   [anon_sym_RBRACK] = "]",
   [sym_source_file] = "source_file",
@@ -412,7 +412,7 @@ static const TSSymbol ts_symbol_map[] = {
   [anon_sym_return] = anon_sym_return,
   [anon_sym_SEMI] = anon_sym_SEMI,
   [sym_identifier] = sym_identifier,
-  [sym_number] = sym_number,
+  [sym_number_literal] = sym_number_literal,
   [anon_sym_LBRACK] = anon_sym_LBRACK,
   [anon_sym_RBRACK] = anon_sym_RBRACK,
   [sym_source_file] = sym_source_file,
@@ -896,7 +896,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [sym_number] = {
+  [sym_number_literal] = {
     .visible = true,
     .named = true,
   },
@@ -3649,7 +3649,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           ('a' <= lookahead && lookahead <= 'z')) ADVANCE(845);
       END_STATE();
     case 846:
-      ACCEPT_TOKEN(sym_number);
+      ACCEPT_TOKEN(sym_number_literal);
       if (('0' <= lookahead && lookahead <= '9')) ADVANCE(846);
       END_STATE();
     case 847:
@@ -3809,7 +3809,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_RBRACE] = ACTIONS(1),
     [anon_sym_return] = ACTIONS(1),
     [anon_sym_SEMI] = ACTIONS(1),
-    [sym_number] = ACTIONS(1),
+    [sym_number_literal] = ACTIONS(1),
     [anon_sym_LBRACK] = ACTIONS(1),
     [anon_sym_RBRACK] = ACTIONS(1),
   },
@@ -5081,13 +5081,13 @@ static const uint16_t ts_small_parse_table[] = {
       sym__expression,
     ACTIONS(58), 2,
       sym_identifier,
-      sym_number,
+      sym_number_literal,
   [16] = 2,
     STATE(20), 1,
       sym__expression,
     ACTIONS(60), 2,
       sym_identifier,
-      sym_number,
+      sym_number_literal,
   [24] = 2,
     ACTIONS(62), 1,
       anon_sym_LPAREN,
