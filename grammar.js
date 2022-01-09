@@ -120,7 +120,10 @@ module.exports = grammar({
     unary_expression: ($) =>
       prec.left(
         PREC.UNARY,
-        seq(field("operator", choice("!")), field("argument", $._expression))
+        seq(
+          field("operator", choice("!", "-", "+")),
+          field("argument", $._expression)
+        )
       ),
 
     expression_statement: ($) =>
