@@ -23,9 +23,11 @@ Object-like macro definitions
 ============================================
 
 #define ONE 1
+#define ONE "1"
 
 ---
 
 (source_file
+  (preproc_def name: (identifier) value: (preproc_arg))
   (preproc_def name: (identifier) value: (preproc_arg)))
 
