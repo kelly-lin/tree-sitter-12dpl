@@ -29,7 +29,13 @@ module.exports = grammar({
   rules: {
     source_file: ($) => repeat($._definition),
 
-    _definition: ($) => choice($.function_definition, $.compound_statement),
+    _definition: ($) =>
+      choice(
+        $.function_definition,
+        $.compound_statement,
+        $.preproc_include,
+        $.preproc_def
+      ),
 
     function_definition: ($) =>
       seq(
@@ -209,6 +215,7 @@ module.exports = grammar({
         $.identifier,
         $.call_expression,
         $.subscript_expression,
+        $.call_expression,
         $.parenthesized_expression
       ),
 
@@ -265,6 +272,9 @@ module.exports = grammar({
         '"'
       ),
 
+    system_lib_string: ($) =>
+      token(seq("<", repeat(choice(/[^>\n]/, "\\>")), ">")),
+
     escape_sequence: ($) => token(prec(1, seq("\\"))),
 
     declaration: ($) =>
@@ -297,6 +307,31 @@ module.exports = grammar({
 
     _declarator: ($) =>
       choice($.function_declarator, $.array_declarator, $.identifier),
+
+    preproc_include: ($) =>
+      seq(
+        preprocessor("include"),
+        field(
+          "path",
+          choice(
+            $.string_literal,
+            $.system_lib_string,
+            $.identifier,
+            $.call_expression
+          )
+        ),
+        "\n"
+      ),
+
+    preproc_def: ($) =>
+      seq(
+        preprocessor("define"),
+        field("name", $.identifier),
+        field("value", optional($.preproc_arg)),
+        "\n"
+      ),
+
+    preproc_arg: ($) => token(prec(-1, repeat1(/.|\\\r?\n/))),
 
     primitive_type: ($) =>
       choice(
@@ -434,4 +469,8 @@ function commaSep(rule) {
 
 function commaSep1(rule) {
   return seq(rule, repeat(seq(",", rule)));
+}
+
+function preprocessor(command) {
+  return alias(new RegExp("#[ \t]*" + command), "#" + command);
 }

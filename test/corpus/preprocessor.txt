@@ -1,0 +1,31 @@
+============================================
+Include directives
+============================================
+
+#include "some/path.h"
+#include <stdint.h>
+#include MACRO
+#include MACRO(arg1, arg2)
+
+---
+
+(source_file
+  (preproc_include path: (string_literal))
+  (preproc_include path: (system_lib_string))
+  (preproc_include path: (identifier))
+  (preproc_include path:
+    (call_expression
+      function: (identifier)
+      arguments: (argument_list (identifier) (identifier)))))
+
+============================================
+Object-like macro definitions
+============================================
+
+#define ONE 1
+
+---
+
+(source_file
+  (preproc_def name: (identifier) value: (preproc_arg)))
+
