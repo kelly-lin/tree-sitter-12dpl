@@ -1,3 +1,26 @@
+const PREC = {
+  PAREN_DECLARATOR: -10,
+  ASSIGNMENT: -1,
+  CONDITIONAL: -2,
+  DEFAULT: 0,
+  LOGICAL_OR: 1,
+  LOGICAL_AND: 2,
+  INCLUSIVE_OR: 3,
+  EXCLUSIVE_OR: 4,
+  BITWISE_AND: 5,
+  EQUAL: 6,
+  RELATIONAL: 7,
+  SIZEOF: 8,
+  SHIFT: 9,
+  ADD: 10,
+  MULTIPLY: 11,
+  CAST: 12,
+  UNARY: 13,
+  CALL: 14,
+  FIELD: 15,
+  SUBSCRIPT: 16,
+};
+
 module.exports = grammar({
   name: "ProgrammingLanguage12d",
 
@@ -30,6 +53,77 @@ module.exports = grammar({
     _declaration_specifiers: ($) => seq(field("type", $._type_specifier)),
 
     _type_specifier: ($) => $.primitive_type,
+
+    // _statement: ($) => choice($.return_statement, $.declaration),
+    _statement: ($) => choice($._non_case_statement),
+
+    // case_statement: ($) =>
+    //   prec.right(
+    //     seq(
+    //       choice(seq("case", field("value", $._expression)), "default"),
+    //       ":",
+    //       repeat(
+    //         choice(
+    //           alias($.attributed_non_case_statement, $.attributed_statement),
+    //           $._non_case_statement,
+    //           $.declaration,
+    //           $.type_definition
+    //         )
+    //       )
+    //     )
+    //   ),
+
+    _non_case_statement: ($) =>
+      choice(
+        $.compound_statement,
+        $.if_statement,
+        $.return_statement,
+        $.declaration
+      ),
+
+    if_statement: ($) =>
+      prec.right(
+        seq(
+          "if",
+          field("condition", $.parenthesized_expression),
+          field("consequence", $._statement),
+          optional(seq("else", field("alternative", $._statement)))
+        )
+      ),
+
+    unary_expression: ($) =>
+      prec.left(
+        PREC.UNARY,
+        seq(field("operator", choice("!")), field("argument", $._expression))
+      ),
+
+    parenthesized_expression: ($) => seq("(", $._expression, ")"),
+
+    return_statement: ($) => seq("return", $._expression, ";"),
+
+    _expression: ($) =>
+      choice($.identifier, $.number_literal, $.unary_expression),
+
+    identifier: ($) => /[a-zA-Z_]\w*/,
+
+    number_literal: ($) => /\d+/,
+
+    declaration: ($) => seq($.primitive_type, $._declarator, ";"),
+
+    array_declarator: ($) =>
+      prec(1, seq($._declarator, "[", $._expression, "]")),
+
+    function_declarator: ($) =>
+      prec(
+        1,
+        seq(
+          field("declarator", $._declarator),
+          field("parameters", $.parameter_list)
+        )
+      ),
+
+    _declarator: ($) =>
+      choice($.function_declarator, $.array_declarator, $.identifier),
 
     primitive_type: ($) =>
       choice(
@@ -148,38 +242,6 @@ module.exports = grammar({
         "Dynamic_Real",
         "Dynamic_Text"
       ),
-
-    _statement: ($) => choice($.return_statement, $.declaration),
-
-    return_statement: ($) => seq("return", $._expression, ";"),
-
-    _expression: ($) =>
-      choice(
-        $.identifier,
-        $.number_literal
-        // TODO: other kinds of expressions
-      ),
-
-    identifier: ($) => /[a-zA-Z_]\w*/,
-
-    number_literal: ($) => /\d+/,
-
-    declaration: ($) => seq($.primitive_type, $._declarator, ";"),
-
-    array_declarator: ($) =>
-      prec(1, seq($._declarator, "[", $._expression, "]")),
-
-    function_declarator: ($) =>
-      prec(
-        1,
-        seq(
-          field("declarator", $._declarator),
-          field("parameters", $.parameter_list)
-        )
-      ),
-
-    _declarator: ($) =>
-      choice($.function_declarator, $.array_declarator, $.identifier),
   },
 });
 

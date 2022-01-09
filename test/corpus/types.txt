@@ -340,6 +340,7 @@ Fixed array types
 
 Integer main() {
   Integer a[100];
+  Integer a[b];
 }
 
 ---
@@ -349,4 +350,5 @@ Integer main() {
     (primitive_type)
     (function_declarator (identifier) (parameter_list))
     (compound_statement
-      (declaration (primitive_type) (array_declarator (identifier) (number_literal))))))
+      (declaration (primitive_type) (array_declarator (identifier) (number_literal)))
+      (declaration (primitive_type) (array_declarator (identifier) (identifier))))))
