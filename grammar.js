@@ -27,11 +27,7 @@ module.exports = grammar({
   rules: {
     source_file: ($) => repeat($._definition),
 
-    _definition: ($) =>
-      choice(
-        $.function_definition
-        // TODO: other kinds of definitions
-      ),
+    _definition: ($) => choice($.function_definition, $.compound_statement),
 
     function_definition: ($) =>
       seq(
@@ -74,6 +70,7 @@ module.exports = grammar({
 
     _non_case_statement: ($) =>
       choice(
+        $.expression_statement,
         $.compound_statement,
         $.if_statement,
         $.for_statement,
@@ -108,6 +105,27 @@ module.exports = grammar({
         PREC.UNARY,
         seq(field("operator", choice("!")), field("argument", $._expression))
       ),
+
+    expression_statement: ($) =>
+      seq(optional(choice($._expression, $.comma_expression)), ";"),
+
+    comma_expression: ($) =>
+      seq(
+        field("left", $._expression),
+        ",",
+        field("right", choice($._expression, $.comma_expression))
+      ),
+
+    call_expression: ($) =>
+      prec(
+        PREC.CALL,
+        seq(
+          field("function", $._expression),
+          field("arguments", $.argument_list)
+        )
+      ),
+
+    argument_list: ($) => seq("(", commaSep($._expression), ")"),
 
     binary_expression: ($) => {
       const table = [
@@ -162,14 +180,27 @@ module.exports = grammar({
       choice(
         $.identifier,
         $.number_literal,
+        $.string_literal,
         $.unary_expression,
         $.binary_expression,
+        $.call_expression,
         $.update_expression
       ),
 
     identifier: ($) => /[a-zA-Z_]\w*/,
 
     number_literal: ($) => /\d+/,
+
+    string_literal: ($) =>
+      seq(
+        '"',
+        repeat(
+          choice(token.immediate(prec(1, /[^\\"\n]+/)), $.escape_sequence)
+        ),
+        '"'
+      ),
+
+    escape_sequence: ($) => token(prec(1, seq("\\"))),
 
     declaration: ($) =>
       seq(
@@ -204,6 +235,8 @@ module.exports = grammar({
 
     primitive_type: ($) =>
       choice(
+        "void",
+
         "Integer",
         "Real",
         "Text",
