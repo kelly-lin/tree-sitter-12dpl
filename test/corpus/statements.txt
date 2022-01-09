@@ -51,6 +51,9 @@ For loops
 
 Integer main() {
   for (Integer i = 0; i < 5; i++) {
+    if (a) {
+      continue;
+    }
     return 2;
   }
 }
@@ -66,7 +69,11 @@ Integer main() {
         (declaration (primitive_type) (init_declarator (identifier) (number_literal)))
         (binary_expression (identifier) (number_literal))
         (update_expression (identifier))
-        (compound_statement (return_statement (number_literal)))))))
+        (compound_statement 
+          (if_statement
+            (parenthesized_expression (identifier))
+            (compound_statement (continue_statement)))
+          (return_statement (number_literal)))))))
 
 ============================================
 While loops

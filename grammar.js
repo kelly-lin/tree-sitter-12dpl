@@ -72,6 +72,8 @@ module.exports = grammar({
 
     break_statement: ($) => seq("break", ";"),
 
+    continue_statement: ($) => seq("continue", ";"),
+
     switch_statement: ($) =>
       seq(
         "switch",
@@ -89,6 +91,7 @@ module.exports = grammar({
         $.for_statement,
         $.return_statement,
         $.while_statement,
+        $.continue_statement,
         $.declaration
       ),
 
