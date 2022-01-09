@@ -59,29 +59,33 @@ module.exports = grammar({
 
     _type_specifier: ($) => $.primitive_type,
 
-    _statement: ($) => choice($._non_case_statement),
+    _statement: ($) => choice($.case_statement, $._non_case_statement),
 
-    // case_statement: ($) =>
-    //   prec.right(
-    //     seq(
-    //       choice(seq("case", field("value", $._expression)), "default"),
-    //       ":",
-    //       repeat(
-    //         choice(
-    //           alias($.attributed_non_case_statement, $.attributed_statement),
-    //           $._non_case_statement,
-    //           $.declaration,
-    //           $.type_definition
-    //         )
-    //       )
-    //     )
-    //   ),
+    case_statement: ($) =>
+      prec.right(
+        seq(
+          choice(seq("case", field("value", $._expression)), "default"),
+          ":",
+          repeat(prec(1, choice($._non_case_statement, $.declaration)))
+        )
+      ),
+
+    break_statement: ($) => seq("break", ";"),
+
+    switch_statement: ($) =>
+      seq(
+        "switch",
+        field("condition", $.parenthesized_expression),
+        field("body", $.compound_statement)
+      ),
 
     _non_case_statement: ($) =>
       choice(
         $.expression_statement,
         $.compound_statement,
         $.if_statement,
+        $.switch_statement,
+        $.break_statement,
         $.for_statement,
         $.return_statement,
         $.while_statement,
