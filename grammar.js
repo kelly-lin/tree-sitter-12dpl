@@ -24,6 +24,8 @@ const PREC = {
 module.exports = grammar({
   name: "ProgrammingLanguage12d",
 
+  extras: ($) => [/\s|\\\r?\n/, $.comment],
+
   rules: {
     source_file: ($) => repeat($._definition),
 
@@ -385,6 +387,14 @@ module.exports = grammar({
         "Dynamic_Integer",
         "Dynamic_Real",
         "Dynamic_Text"
+      ),
+
+    comment: ($) =>
+      token(
+        choice(
+          seq("//", /(\\(.|\r?\n)|[^\\\n])*/),
+          seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/")
+        )
       ),
   },
 });

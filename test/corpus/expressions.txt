@@ -117,3 +117,22 @@ Integer main() {
       (expression_statement (assignment_expression
         left: (identifier)
         right: (identifier))))))
+
+====================================
+Comments
+====================================
+
+//hello world
+// hello world
+/* hello world */
+/*
+hello
+world
+*/
+---
+
+(source_file
+  (comment)
+  (comment)
+  (comment)
+  (comment))
