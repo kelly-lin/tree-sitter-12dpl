@@ -68,3 +68,23 @@ Integer main() {
         (update_expression (identifier))
         (compound_statement (return_statement (number_literal)))))))
 
+============================================
+While loops
+============================================
+
+Integer main() {
+  while (x)
+    Print("hi");
+}
+
+---
+
+(source_file
+  (function_definition
+    (primitive_type)
+    (function_declarator (identifier) (parameter_list))
+    (compound_statement
+      (while_statement (parenthesized_expression (identifier))
+        (expression_statement (call_expression
+          (identifier)
+          (argument_list (string_literal))))))))

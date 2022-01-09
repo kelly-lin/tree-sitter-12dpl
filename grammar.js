@@ -40,6 +40,13 @@ module.exports = grammar({
 
     compound_statement: ($) => seq("{", repeat($._statement), "}"),
 
+    while_statement: ($) =>
+      seq(
+        "while",
+        field("condition", $.parenthesized_expression),
+        field("body", $._statement)
+      ),
+
     parameter_list: ($) => seq("(", commaSep($.parameter_declaration), ")"),
 
     parameter_declaration: ($) =>
@@ -77,6 +84,7 @@ module.exports = grammar({
         $.if_statement,
         $.for_statement,
         $.return_statement,
+        $.while_statement,
         $.declaration
       ),
 
