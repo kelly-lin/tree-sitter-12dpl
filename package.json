@@ -1,7 +1,7 @@
 {
   "name": "tree-sitter-12dpl",
   "version": "1.0.0",
-  "description": "",
+  "description": "tree sitter grammar for 12d programming language",
   "main": "bindings/node",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,8 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/kelly-lin/tree-sitter-12dpl.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "parser",
+    "grammar"
+  ],
+  "author": "Kelly Lin",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kelly-lin/tree-sitter-12dpl/issues"
@@ -22,5 +25,13 @@
   },
   "devDependencies": {
     "tree-sitter-cli": "^0.20.1"
-  }
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.12dpl",
+      "file-types": [
+        "4dm"
+      ]
+    }
+  ]
 }
