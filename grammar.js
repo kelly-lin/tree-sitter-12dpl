@@ -216,7 +216,8 @@ module.exports = grammar({
 
     parenthesized_expression: ($) => seq("(", $._expression, ")"),
 
-    return_statement: ($) => seq("return", $._expression, ";"),
+    return_statement: ($) =>
+      seq("return", optional(choice($._expression, $.comma_expression)), ";"),
 
     _expression: ($) =>
       choice(

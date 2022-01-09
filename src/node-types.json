@@ -1130,7 +1130,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "assignment_expression",
@@ -1142,6 +1142,10 @@
         },
         {
           "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "comma_expression",
           "named": true
         },
         {
