@@ -72,7 +72,13 @@ module.exports = grammar({
 
     break_statement: ($) => seq("break", ";"),
 
+    labeled_statement: ($) =>
+      seq(field("label", $._statement_identifier), ":", $._statement),
+
     continue_statement: ($) => seq("continue", ";"),
+
+    goto_statement: ($) =>
+      seq("goto", field("label", $._statement_identifier), ";"),
 
     switch_statement: ($) =>
       seq(
@@ -92,6 +98,8 @@ module.exports = grammar({
         $.return_statement,
         $.while_statement,
         $.continue_statement,
+        $.labeled_statement,
+        $.goto_statement,
         $.declaration
       ),
 
@@ -243,6 +251,8 @@ module.exports = grammar({
       ),
 
     identifier: ($) => /[a-zA-Z_]\w*/,
+
+    _statement_identifier: ($) => alias($.identifier, $.statement_identifier),
 
     number_literal: ($) => /\d+/,
 
