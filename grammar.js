@@ -54,7 +54,6 @@ module.exports = grammar({
 
     _type_specifier: ($) => $.primitive_type,
 
-    // _statement: ($) => choice($.return_statement, $.declaration),
     _statement: ($) => choice($._non_case_statement),
 
     // case_statement: ($) =>
@@ -77,6 +76,7 @@ module.exports = grammar({
       choice(
         $.compound_statement,
         $.if_statement,
+        $.for_statement,
         $.return_statement,
         $.declaration
       ),
@@ -91,10 +91,67 @@ module.exports = grammar({
         )
       ),
 
+    for_statement: ($) =>
+      seq(
+        "for",
+        "(",
+        field("initializer", $.declaration),
+        field("condition", $._expression),
+        ";",
+        field("update", $._expression),
+        ")",
+        $._statement
+      ),
+
     unary_expression: ($) =>
       prec.left(
         PREC.UNARY,
         seq(field("operator", choice("!")), field("argument", $._expression))
+      ),
+
+    binary_expression: ($) => {
+      const table = [
+        ["+", PREC.ADD],
+        ["-", PREC.ADD],
+        ["*", PREC.MULTIPLY],
+        ["/", PREC.MULTIPLY],
+        ["%", PREC.MULTIPLY],
+        ["||", PREC.LOGICAL_OR],
+        ["&&", PREC.LOGICAL_AND],
+        ["|", PREC.INCLUSIVE_OR],
+        ["^", PREC.EXCLUSIVE_OR],
+        ["&", PREC.BITWISE_AND],
+        ["==", PREC.EQUAL],
+        ["!=", PREC.EQUAL],
+        [">", PREC.RELATIONAL],
+        [">=", PREC.RELATIONAL],
+        ["<=", PREC.RELATIONAL],
+        ["<", PREC.RELATIONAL],
+        ["<<", PREC.SHIFT],
+        [">>", PREC.SHIFT],
+      ];
+
+      return choice(
+        ...table.map(([operator, precedence]) => {
+          return prec.left(
+            precedence,
+            seq(
+              field("left", $._expression),
+              field("operator", operator),
+              field("right", $._expression)
+            )
+          );
+        })
+      );
+    },
+
+    update_expression: ($) =>
+      prec.right(
+        PREC.UNARY,
+        seq(
+          field("argument", $._expression),
+          field("operator", choice("--", "++"))
+        )
       ),
 
     parenthesized_expression: ($) => seq("(", $._expression, ")"),
@@ -102,13 +159,33 @@ module.exports = grammar({
     return_statement: ($) => seq("return", $._expression, ";"),
 
     _expression: ($) =>
-      choice($.identifier, $.number_literal, $.unary_expression),
+      choice(
+        $.identifier,
+        $.number_literal,
+        $.unary_expression,
+        $.binary_expression,
+        $.update_expression
+      ),
 
     identifier: ($) => /[a-zA-Z_]\w*/,
 
     number_literal: ($) => /\d+/,
 
-    declaration: ($) => seq($.primitive_type, $._declarator, ";"),
+    declaration: ($) =>
+      seq(
+        $._declaration_specifiers,
+        commaSep1(
+          field("declarator", choice($._declarator, $.init_declarator))
+        ),
+        ";"
+      ),
+
+    init_declarator: ($) =>
+      seq(
+        field("declarator", $._declarator),
+        "=",
+        field("value", $._expression)
+      ),
 
     array_declarator: ($) =>
       prec(1, seq($._declarator, "[", $._expression, "]")),
