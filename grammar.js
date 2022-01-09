@@ -163,6 +163,38 @@ module.exports = grammar({
       );
     },
 
+    assignment_expression: ($) =>
+      prec.right(
+        PREC.ASSIGNMENT,
+        seq(
+          field("left", $._assignment_left_expression),
+          field(
+            "operator",
+            choice("=", "*=", "/=", "%=", "+=", "-=", "&=", "^=", "|=")
+          ),
+          field("right", $._expression)
+        )
+      ),
+
+    _assignment_left_expression: ($) =>
+      choice(
+        $.identifier,
+        $.call_expression,
+        $.subscript_expression,
+        $.parenthesized_expression
+      ),
+
+    subscript_expression: ($) =>
+      prec(
+        PREC.SUBSCRIPT,
+        seq(
+          field("argument", $._expression),
+          "[",
+          field("index", $._expression),
+          "]"
+        )
+      ),
+
     update_expression: ($) =>
       prec.right(
         PREC.UNARY,
@@ -183,8 +215,10 @@ module.exports = grammar({
         $.string_literal,
         $.unary_expression,
         $.binary_expression,
+        $.assignment_expression,
         $.call_expression,
-        $.update_expression
+        $.update_expression,
+        $.subscript_expression
       ),
 
     identifier: ($) => /[a-zA-Z_]\w*/,

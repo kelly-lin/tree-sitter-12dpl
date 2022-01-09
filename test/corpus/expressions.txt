@@ -68,3 +68,52 @@ Integer main() {
         (binary_expression
           (unary_expression (identifier))
           (unary_expression (identifier))))))))
+
+============================================
+Assignments
+============================================
+
+Integer main() {
+  Integer a = 1;
+  b = 2;
+  h[i] = j;
+  k += l;
+  m -= o;
+  n *= p;
+  q /= r;
+}
+
+---
+
+(source_file
+  (function_definition
+    type: (primitive_type)
+    declarator: (function_declarator
+      declarator: (identifier)
+      parameters: (parameter_list))
+    body: (compound_statement
+      (declaration
+        type: (primitive_type)
+        declarator: (init_declarator
+          declarator: (identifier)
+          value: (number_literal)))
+      (expression_statement (assignment_expression
+        left: (identifier)
+        right: (number_literal)))
+      (expression_statement (assignment_expression
+        left: (subscript_expression
+          argument: (identifier)
+          index: (identifier))
+        right: (identifier)))
+      (expression_statement (assignment_expression
+        left: (identifier)
+        right: (identifier)))
+      (expression_statement (assignment_expression
+        left: (identifier)
+        right: (identifier)))
+      (expression_statement (assignment_expression
+        left: (identifier)
+        right: (identifier)))
+      (expression_statement (assignment_expression
+        left: (identifier)
+        right: (identifier))))))
