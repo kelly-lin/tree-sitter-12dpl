@@ -110,4 +110,28 @@ void foo() {
       (return_statement (identifier))
       (return_statement (comma_expression (identifier) (identifier))))))
 
+============================================
+Comments with asterisks
+============================================
+
+{
+  /*************************
+   * odd number of asterisks
+   *************************/
+  Integer a;
+
+  /**************************
+   * even number of asterisks
+   **************************/
+  Integer b;
+}
+
+---
+
+(source_file
+   (compound_statement
+     (comment)
+     (declaration (primitive_type) (identifier))
+     (comment)
+     (declaration (primitive_type) (identifier))))
 
