@@ -1,3 +1,5 @@
+(identifier) @variable
+
 [
   "break"
   "case"
@@ -36,11 +38,12 @@
 
 ";" @delimiter
 
+;; Literals
 (string_literal) @string
 (system_lib_string) @string
-
 (number_literal) @number
 
+;; Preprocessors
 (preproc_def 
   (identifier) @constant)
 
@@ -59,9 +62,8 @@
     declarator: (identifier) @parameter)
 
 (statement_identifier) @label
-(primitive_type) @type
 
-(identifier) @variable
+(primitive_type) @type
 
 (comment) @comment
 
