@@ -22,14 +22,24 @@ const PREC = {
 };
 
 module.exports = grammar({
-  name: "ProgrammingLanguage12d",
+  name: "pl12d",
 
   extras: ($) => [/\s|\\\r?\n/, $.comment],
 
-  rules: {
-    source_file: ($) => repeat($._definition),
+  word: ($) => $.identifier,
 
-    _definition: ($) =>
+  inline: ($) => [
+    $._statement,
+    $._top_level_item,
+    $._type_identifier,
+    $._non_case_statement,
+    $._assignment_left_expression,
+  ],
+
+  rules: {
+    source_file: ($) => repeat($._top_level_item),
+
+    _top_level_item: ($) =>
       choice(
         $.function_definition,
         $.compound_statement,
@@ -61,9 +71,9 @@ module.exports = grammar({
         optional(field("declarator", $._declarator))
       ),
 
-    _declaration_specifiers: ($) => seq(field("type", $._type_specifier)),
+    _declaration_specifiers: ($) => field("type", $._type_specifier),
 
-    _type_specifier: ($) => $.primitive_type,
+    _type_specifier: ($) => choice($._type_identifier, $.primitive_type),
 
     _statement: ($) => choice($.case_statement, $._non_case_statement),
 
@@ -78,8 +88,7 @@ module.exports = grammar({
 
     break_statement: ($) => seq("break", ";"),
 
-    labeled_statement: ($) =>
-      seq(field("label", $._statement_identifier), ":", $._statement),
+    labeled_statement: ($) => seq(field("label", $._statement_identifier), ":"),
 
     continue_statement: ($) => seq("continue", ";"),
 
@@ -95,15 +104,15 @@ module.exports = grammar({
 
     _non_case_statement: ($) =>
       choice(
-        $.expression_statement,
-        $.compound_statement,
         $.if_statement,
         $.switch_statement,
         $.break_statement,
         $.for_statement,
         $.return_statement,
         $.while_statement,
+        $.expression_statement,
         $.continue_statement,
+        $.compound_statement,
         $.labeled_statement,
         $.goto_statement,
         $.declaration
@@ -246,22 +255,23 @@ module.exports = grammar({
 
     _expression: ($) =>
       choice(
-        $.identifier,
-        $.number_literal,
-        $.string_literal,
         $.unary_expression,
         $.binary_expression,
         $.assignment_expression,
         $.call_expression,
         $.update_expression,
-        $.subscript_expression
+        $.subscript_expression,
+        $.number_literal,
+        $.string_literal,
+        $.identifier
       ),
 
     identifier: ($) => /[a-zA-Z_]\w*/,
 
+    _type_identifier: ($) => alias($.identifier, $.primitive_type),
     _statement_identifier: ($) => alias($.identifier, $.statement_identifier),
 
-    number_literal: ($) => /\d+/,
+    number_literal: ($) => token(/\d+/),
 
     string_literal: ($) =>
       seq(
@@ -294,7 +304,15 @@ module.exports = grammar({
       ),
 
     array_declarator: ($) =>
-      prec(1, seq($._declarator, "[", $._expression, "]")),
+      prec(
+        1,
+        seq(
+          field("declarator", $._declarator),
+          "[",
+          field("size", $._expression),
+          "]"
+        )
+      ),
 
     function_declarator: ($) =>
       prec(
@@ -331,126 +349,128 @@ module.exports = grammar({
         "\n"
       ),
 
-    preproc_arg: ($) => token(prec(-1, repeat1(/.|\\\r?\n/))),
+    preproc_arg: ($) => prec(-1, choice($.number_literal, $.string_literal)),
 
     primitive_type: ($) =>
-      choice(
-        "void",
+      token(
+        choice(
+          "void",
 
-        "Integer",
-        "Real",
-        "Text",
-        "Vector2",
-        "Vector3",
-        "Vector4",
-        "Matrix3",
-        "Matrix4",
+          "Integer",
+          "Real",
+          "Text",
+          "Vector2",
+          "Vector3",
+          "Vector4",
+          "Matrix3",
+          "Matrix4",
 
-        "Point",
-        "Line",
-        "Arc",
-        "Spiral",
-        "Parabola",
-        "Segment",
+          "Point",
+          "Line",
+          "Arc",
+          "Spiral",
+          "Parabola",
+          "Segment",
 
-        "Element",
-        "Model",
-        "View",
-        "Macro_Function",
-        "Function",
+          "Element",
+          "Model",
+          "View",
+          "Macro_Function",
+          "Function",
 
-        "Uid",
-        "Guid",
-        "Attributes",
-        "SDR_Attribute",
-        "Blob",
-        "Screen_Text",
-        "Textstyle_Data",
-        "Equality_Label",
-        "Undo",
-        "Undo_List",
+          "Uid",
+          "Guid",
+          "Attributes",
+          "SDR_Attribute",
+          "Blob",
+          "Screen_Text",
+          "Textstyle_Data",
+          "Equality_Label",
+          "Undo",
+          "Undo_List",
 
-        "Widget",
-        "Menu",
-        "Panel",
-        "Overlay_Widget",
-        "Vertical_Group",
-        "Horizontal_Group",
-        "Widget_Pages",
-        "Button",
-        "Select_Button",
-        "Angle_Box",
-        "Attributes_Box",
-        "Billboard_Box",
-        "Bitmap_Fill_Box",
-        "Bitmap_List_Box",
-        "Chainage_Box",
-        "Choice_Box",
-        "Colour_Box",
-        "Colour_Message_Box",
-        "Date_Time_Box",
-        "Directory_Box",
-        "Draw_Box",
-        "File_Box",
-        "Function_Box",
-        "Graph_Box",
-        "GridCtrl_Box",
-        "HyperLink_Box",
-        "Input_Box",
-        "Integer_Box",
-        "Justify_Box",
-        "Linestyle_Box",
-        "List_Box",
-        "ListCtrl_Box",
-        "Map_File_Box",
-        "Message_Box",
-        "Model_Box",
-        "Name_Box",
-        "Named_Tick_Box",
-        "New_Select_Box",
-        "New_XYZ_Box",
-        "Plotter_Box",
-        "Polygon_Box",
-        "Real_Box",
-        "Report_Box",
-        "Select_Box",
-        "Select_Boxes",
-        "Sheet_Size_Box",
-        "Source_Box",
-        "Symbol_Box",
-        "Tab_Box",
-        "Target_Box",
-        "Template_Box",
-        "Text_Edit_Box",
-        "Text_Style_Box",
-        "Texture_Box",
-        "Tree_Box",
-        "Tree_Page",
-        "Tick_Box",
-        "Tin_Box",
-        "View_Box",
-        "XYZ_Box",
-        "File",
-        "Map_File",
-        "Plot_Parameter_File",
-        "XML_Document",
-        "XML_Node",
+          "Widget",
+          "Menu",
+          "Panel",
+          "Overlay_Widget",
+          "Vertical_Group",
+          "Horizontal_Group",
+          "Widget_Pages",
+          "Button",
+          "Select_Button",
+          "Angle_Box",
+          "Attributes_Box",
+          "Billboard_Box",
+          "Bitmap_Fill_Box",
+          "Bitmap_List_Box",
+          "Chainage_Box",
+          "Choice_Box",
+          "Colour_Box",
+          "Colour_Message_Box",
+          "Date_Time_Box",
+          "Directory_Box",
+          "Draw_Box",
+          "File_Box",
+          "Function_Box",
+          "Graph_Box",
+          "GridCtrl_Box",
+          "HyperLink_Box",
+          "Input_Box",
+          "Integer_Box",
+          "Justify_Box",
+          "Linestyle_Box",
+          "List_Box",
+          "ListCtrl_Box",
+          "Map_File_Box",
+          "Message_Box",
+          "Model_Box",
+          "Name_Box",
+          "Named_Tick_Box",
+          "New_Select_Box",
+          "New_XYZ_Box",
+          "Plotter_Box",
+          "Polygon_Box",
+          "Real_Box",
+          "Report_Box",
+          "Select_Box",
+          "Select_Boxes",
+          "Sheet_Size_Box",
+          "Source_Box",
+          "Symbol_Box",
+          "Tab_Box",
+          "Target_Box",
+          "Template_Box",
+          "Text_Edit_Box",
+          "Text_Style_Box",
+          "Texture_Box",
+          "Tree_Box",
+          "Tree_Page",
+          "Tick_Box",
+          "Tin_Box",
+          "View_Box",
+          "XYZ_Box",
+          "File",
+          "Map_File",
+          "Plot_Parameter_File",
+          "XML_Document",
+          "XML_Node",
 
-        "Connection",
-        "Select_Query",
-        "Insert_Query",
-        "Update_Query",
-        "Delete_Query",
-        "Database_Results",
-        "Transactions",
-        "Parameter_Collection",
-        "Query_Condition",
-        "Manual_Condition",
+          "Connection",
+          "Select_Query",
+          "Insert_Query",
+          "Update_Query",
+          "Delete_Query",
+          "Database_Results",
+          "Transactions",
+          "Parameter_Collection",
+          "Query_Condition",
+          "Manual_Condition",
 
-        "Dynamic_Element",
-        "Dynamic_Integer",
-        "Dynamic_Real",
-        "Dynamic_Text"
+          "Dynamic_Element",
+          "Dynamic_Integer",
+          "Dynamic_Real",
+          "Dynamic_Text"
+        )
       ),
 
     comment: ($) =>
@@ -461,7 +481,16 @@ module.exports = grammar({
         )
       ),
   },
+
+  supertypes: ($) => [
+    $._expression,
+    $._statement,
+    $._type_specifier,
+    $._declarator,
+  ],
 });
+
+module.exports.PREC = PREC;
 
 function commaSep(rule) {
   return optional(commaSep1(rule));

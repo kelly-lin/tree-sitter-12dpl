@@ -4,7 +4,9 @@
   "description": "tree sitter grammar for 12d programming language",
   "main": "bindings/node",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tree-sitter generate && node-gyp build",
+    "test": "tree-sitter test && tree-sitter parse examples/* --quiet --time",
+    "test-windows": "tree-sitter test"
   },
   "repository": {
     "type": "git",
@@ -28,7 +30,7 @@
   },
   "tree-sitter": [
     {
-      "scope": "source.12dpl",
+      "scope": "source.pl12d",
       "file-types": [
         "4dm"
       ]

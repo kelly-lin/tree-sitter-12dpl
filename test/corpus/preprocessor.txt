@@ -28,6 +28,6 @@ Object-like macro definitions
 ---
 
 (source_file
-  (preproc_def name: (identifier) value: (preproc_arg))
-  (preproc_def name: (identifier) value: (preproc_arg)))
+  (preproc_def name: (identifier) value: (preproc_arg (number_literal)))
+  (preproc_def name: (identifier) value: (preproc_arg (string_literal))))
 
