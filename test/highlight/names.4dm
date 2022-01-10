@@ -1,8 +1,10 @@
-Integer main(Real a) {
+Integer main(Real a, Text b) {
   // <- type
   //    ^ function
   //          ^ type
-  //              ^ variable
+  //              ^ parameter
+  //                  ^ type
+  //                      ^ parameter
 
   return foo + bar();
   // ^ keyword

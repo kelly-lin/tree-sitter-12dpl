@@ -1,32 +1,38 @@
-"break" @keyword
-"case" @keyword
-"continue" @keyword
-"default" @keyword
-"else" @keyword
-"for" @keyword
-"if" @keyword
-"return" @keyword
-"switch" @keyword
-"while" @keyword
+[
+  "break"
+  "case"
+  "continue"
+  "default"
+  "else"
+  "for"
+  "if"
+  "return"
+  "switch"
+  "while"
+] @keyword
 
-"#define" @keyword
-"#include" @keyword
+[
+ "#define" 
+ "#include" 
+] @keyword
 
-"--" @operator
-"-" @operator
-"-=" @operator
-"=" @operator
-"!=" @operator
-"*" @operator
-"&" @operator
-"&&" @operator
-"+" @operator
-"++" @operator
-"+=" @operator
-"<" @operator
-"==" @operator
-">" @operator
-"||" @operator
+[
+  "--" 
+  "-" 
+  "-=" 
+  "=" 
+  "!=" 
+  "*" 
+  "&" 
+  "&&" 
+  "+" 
+  "++" 
+  "+=" 
+  "<" 
+  "==" 
+  ">" 
+  "||" 
+] @operator
 
 ";" @delimiter
 
@@ -35,10 +41,22 @@
 
 (number_literal) @number
 
+(preproc_def 
+  (identifier) @constant)
+
+;; Functions
 (call_expression
   function: (identifier) @function)
-(function_declarator
-  declarator: (identifier) @function)
+
+(function_definition
+  type: (primitive_type) 
+  declarator: (function_declarator
+    declarator: (identifier) @function))
+
+;; Parameters
+(parameter_declaration
+    type: (primitive_type)
+    declarator: (identifier) @parameter)
 
 (statement_identifier) @label
 (primitive_type) @type
