@@ -1,7 +1,7 @@
 {
   "name": "tree-sitter-12dpl",
   "version": "1.0.0",
-  "description": "tree sitter grammar for 12d programming language",
+  "description": "Tree Sitter grammar for 12d programming language",
   "main": "bindings/node",
   "scripts": {
     "build": "tree-sitter generate && node-gyp build",
