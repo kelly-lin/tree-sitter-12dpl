@@ -182,9 +182,7 @@ Basic statements
 
 (source_file
   (compound_statement
-    (declaration 
-      (primitive_type)
-      (identifier))))
+    (declaration (primitive_type) (identifier))))
 
 ============================================
 Expression statements
