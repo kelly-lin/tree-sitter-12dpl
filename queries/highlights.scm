@@ -1,5 +1,3 @@
-(identifier) @variable
-
 [
   "break"
   "case"
@@ -44,8 +42,7 @@
 (number_literal) @number
 
 ;; Preprocessors
-(preproc_def 
-  (identifier) @constant)
+(preproc_def (identifier) @constant)
 
 ;; Functions
 (call_expression
