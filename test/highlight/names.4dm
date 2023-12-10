@@ -8,8 +8,6 @@ Integer main(Real a, Text b) {
 
   return foo + bar();
   // ^ keyword
-  //     ^ variable
-  //             ^ function
 
 error:
   // <- label
