@@ -1,0 +1,3 @@
+void Foo() {
+//   ^ definition.function
+}

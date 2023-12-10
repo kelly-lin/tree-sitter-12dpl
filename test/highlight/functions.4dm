@@ -1,5 +1,6 @@
 void main() {
-  //  ^ function
+// <- type
+//   ^ function
   Print("hello world");
-  // ^ function
+// ^ function
 }
