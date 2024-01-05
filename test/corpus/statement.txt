@@ -3,14 +3,14 @@ If statements
 ============================================
 
 Integer main() {
-  if (a)
-    return 1;
-
-  if (!a) {
-    return 2;
-  } else {
-    return 3;
-  }
+    if (a)
+        return 1;
+  
+    if (!a) {
+        return 2;
+    } else {
+        return 3;
+    }
 }
 
 ---
@@ -18,27 +18,36 @@ Integer main() {
 (source_file
   (function_definition
     (primitive_type)
-    (function_declarator (identifier) (parameter_list))
+    (function_declarator
+      (identifier)
+      (parameter_list))
     (compound_statement
-      (if_statement (parenthesized_expression (identifier))
-        (return_statement (number_literal)))
-      (if_statement (parenthesized_expression (unary_expression (identifier)))
+      (if_statement
+        (parenthesized_expression
+            (identifier))
+        (return_statement
+          (number_literal)))
+      (if_statement
+        (parenthesized_expression
+          (unary_expression (identifier)))
         (compound_statement
-          (return_statement (number_literal)))
+          (return_statement
+            (number_literal)))
         (compound_statement
-          (return_statement (number_literal)))))))
+          (return_statement
+            (number_literal)))))))
 
 ============================================
 For loops
 ============================================
 
 Integer main() {
-  for (Integer i = 0; i < 5; i++) {
-    if (a) {
-      continue;
+    for (Integer i = 0; i < 5; i++) {
+        if (a) {
+            continue;
+        }
+        return 2;
     }
-    return 2;
-  }
 }
 
 ---
@@ -46,26 +55,38 @@ Integer main() {
 (source_file
   (function_definition
     (primitive_type)
-    (function_declarator (identifier) (parameter_list))
+    (function_declarator
+      (identifier)
+      (parameter_list))
     (compound_statement
       (for_statement
-        (declaration (primitive_type) (init_declarator (identifier) (number_literal)))
-        (binary_expression (identifier) (number_literal))
-        (update_expression (identifier))
+        (declaration
+          (primitive_type)
+          (init_declarator
+            (identifier)
+            (number_literal)))
+        (binary_expression
+          (identifier)
+          (number_literal))
+        (update_expression
+          (identifier))
         (compound_statement 
           (if_statement
-            (parenthesized_expression (identifier))
-            (compound_statement (continue_statement)))
-          (return_statement (number_literal)))))))
+            (parenthesized_expression
+              (identifier))
+            (compound_statement
+              (continue_statement)))
+          (return_statement
+            (number_literal)))))))
 
 ============================================
 While loops
 ============================================
 
 Integer main() {
-  while (x) {
-    Print("hi");
-  }
+    while (x) {
+        Print("hi");
+    }
 }
 
 ---
@@ -73,22 +94,28 @@ Integer main() {
 (source_file
   (function_definition
     (primitive_type)
-    (function_declarator (identifier) (parameter_list))
+    (function_declarator 
+      (identifier)
+      (parameter_list))
     (compound_statement
-      (while_statement (parenthesized_expression (identifier))
+      (while_statement
+        (parenthesized_expression
+          (identifier))
         (compound_statement 
-          (expression_statement (call_expression
-            (identifier)
-            (argument_list (string_literal)))))))))
+          (expression_statement
+            (call_expression
+              (identifier)
+              (argument_list
+                (string_literal)))))))))
 
 ============================================
 Return statements
 ============================================
 
 void foo() {
-  return;
-  return a;
-  return a, b;
+    return;
+    return a;
+    return a, b;
 }
 
 ---
@@ -96,56 +123,66 @@ void foo() {
 (source_file
   (function_definition
     (primitive_type)
-    (function_declarator (identifier) (parameter_list))
+    (function_declarator
+      (identifier)
+      (parameter_list))
     (compound_statement
       (return_statement)
-      (return_statement (identifier))
-      (return_statement (comma_expression (identifier) (identifier))))))
+      (return_statement
+        (identifier))
+      (return_statement
+        (comma_expression
+          (identifier)
+          (identifier))))))
 
 ============================================
 Comments with asterisks
 ============================================
 
 {
-  /*************************
-   * odd number of asterisks
-   *************************/
-  Integer a;
+    /*************************
+     * odd number of asterisks
+     *************************/
+    Integer a;
 
-  /**************************
-   * even number of asterisks
-   **************************/
-  Integer b;
+    /**************************
+     * even number of asterisks
+     **************************/
+    Integer b;
 }
 
 ---
 
 (source_file
-   (compound_statement
-     (comment)
-     (declaration (primitive_type) (identifier))
-     (comment)
-     (declaration (primitive_type) (identifier))))
+  (compound_statement
+    (comment)
+    (declaration
+      (primitive_type)
+      (identifier))
+    (comment)
+    (declaration
+      (primitive_type)
+      (identifier))))
 
 ============================================
 Switch statements
 ============================================
 
 void foo(Integer a) {
-  switch (a) {
-    Print("entered switch!");
-
-    case 3:
-    case 5:
-      if (b) {
-        c();
-      }
-      break;
-
-    default:
-      c();
-      break;
-  }
+    switch (a) {
+        Print("entered switch!");
+    
+        case 3:
+        case 5:
+            if (b) {
+                c();
+            }
+            break;
+    
+        default:
+            c();
+            break;
+    }
 }
 
 ---
@@ -153,21 +190,40 @@ void foo(Integer a) {
 (source_file
   (function_definition
     (primitive_type)
-    (function_declarator (identifier) (parameter_list
-      (parameter_declaration (primitive_type) (identifier))))
+    (function_declarator
+      (identifier)
+      (parameter_list
+        (parameter_declaration
+          (primitive_type)
+          (identifier))))
     (compound_statement
       (switch_statement
-        (parenthesized_expression (identifier))
+        (parenthesized_expression
+          (identifier))
         (compound_statement
-          (expression_statement (call_expression (identifier) (argument_list (string_literal))))
-          (case_statement (number_literal))
-          (case_statement (number_literal)
+          (expression_statement
+            (call_expression
+              (identifier)
+              (argument_list
+              (string_literal))))
+          (case_statement
+            (number_literal))
+          (case_statement
+            (number_literal)
             (if_statement
-              (parenthesized_expression (identifier))
-              (compound_statement (expression_statement (call_expression (identifier) (argument_list)))))
+              (parenthesized_expression
+                (identifier))
+              (compound_statement
+                (expression_statement
+                  (call_expression
+                    (identifier)
+                    (argument_list)))))
             (break_statement))
           (case_statement
-            (expression_statement (call_expression (identifier) (argument_list)))
+            (expression_statement
+              (call_expression
+                (identifier)
+                (argument_list)))
             (break_statement)))))))
 
 ============================================
@@ -175,21 +231,23 @@ Basic statements
 ============================================
 
 {
-  Integer a;
+    Integer a;
 }
 
 ---
 
 (source_file
   (compound_statement
-    (declaration (primitive_type) (identifier))))
+    (declaration
+      (primitive_type)
+      (identifier))))
 
 ============================================
 Expression statements
 ============================================
 
 {
-  Print("hello");
+    Print("hello");
 }
 
 ---

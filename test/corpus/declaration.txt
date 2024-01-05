@@ -3,87 +3,93 @@ Primitive-typed variable declarations
 ============================================
 
 {
-  Integer b, c = 5, d;
-  Text d, e;
-  Real f;
+    Integer b, c = 5, d;
+    Text d, e;
+    Real f;
 }
 
 ---
 
 (source_file
-  (compound_statement
-    (declaration
-      type: (primitive_type)
-      declarator: (identifier)
-      declarator: (init_declarator
-      declarator: (identifier)
-      value: (number_literal))
-      declarator: (identifier))
-    (declaration
-      type: (primitive_type)
-      declarator: (identifier)
-      declarator: (identifier))
-    (declaration
-      type: (primitive_type)
-      declarator: (identifier))))
+    (compound_statement
+        (declaration
+            type: (primitive_type)
+            declarator: (identifier)
+            declarator: (init_declarator
+            declarator: (identifier)
+            value: (number_literal))
+            declarator: (identifier))
+        (declaration
+            type: (primitive_type)
+            declarator: (identifier)
+            declarator: (identifier))
+        (declaration
+            type: (primitive_type)
+            declarator: (identifier))))
 
 ============================================
 Function definitions
 ============================================
 
 void do_stuff(Integer arg1) {
-  return 5;
+    return 5;
 }
 
 ---
 
 (source_file
-  (function_definition
-    (primitive_type)
-    (function_declarator (identifier) (parameter_list
-      (parameter_declaration
+    (function_definition
         (primitive_type)
-        (identifier))))
-    (compound_statement
-      (return_statement (number_literal)))))
+        (function_declarator 
+            (identifier) 
+            (parameter_list
+                (parameter_declaration
+                    (primitive_type)
+                    (identifier))))
+        (compound_statement
+            (return_statement (number_literal)))))
 
 ===================================================
 Function definition with reference type parameters
 ===================================================
 
 void do_stuff(Integer &arg1) {
-  return 5;
+    return 5;
 }
 
 ---
 
 (source_file
-  (function_definition
-    (primitive_type)
-    (function_declarator 
-      (identifier)
-      (parameter_list
-        (parameter_declaration
-          (primitive_type)
-          (pointer_declarator
-            (identifier)))))
-    (compound_statement
-      (return_statement (number_literal)))))
+    (function_definition
+        (primitive_type)
+        (function_declarator 
+            (identifier)
+            (parameter_list
+                (parameter_declaration
+                    (primitive_type)
+                    (pointer_declarator
+                        (identifier)))))
+        (compound_statement
+            (return_statement
+              (number_literal)))))
 
 ================================
 Local array declarations
 ================================
 
 Integer main() {
-  Integer the_buffer[the_size];
+    Integer the_buffer[the_size];
 }
 
 ---
 
 (source_file
-  (function_definition
-    (primitive_type)
-    (function_declarator (identifier) (parameter_list))
-    (compound_statement
-      (declaration (primitive_type) (array_declarator (identifier) (identifier))))))
-
+    (function_definition
+        (primitive_type)
+        (function_declarator 
+            (identifier) (parameter_list))
+        (compound_statement
+            (declaration 
+                (primitive_type)
+                (array_declarator 
+                    (identifier) (identifier))))))

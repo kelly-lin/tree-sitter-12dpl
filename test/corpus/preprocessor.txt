@@ -10,13 +10,18 @@ Include directives
 ---
 
 (source_file
-  (preproc_include path: (string_literal))
-  (preproc_include path: (system_lib_string))
-  (preproc_include path: (identifier))
+  (preproc_include path:
+    (string_literal))
+  (preproc_include path:
+    (system_lib_string))
+  (preproc_include path:
+    (identifier))
   (preproc_include path:
     (call_expression
       function: (identifier)
-      arguments: (argument_list (identifier) (identifier)))))
+      arguments: (argument_list
+        (identifier)
+        (identifier)))))
 
 ============================================
 Object-like macro definitions
@@ -28,6 +33,11 @@ Object-like macro definitions
 ---
 
 (source_file
-  (preproc_def name: (identifier) value: (preproc_arg (number_literal)))
-  (preproc_def name: (identifier) value: (preproc_arg (string_literal))))
-
+  (preproc_def
+    name: (identifier)
+    value: (preproc_arg
+      (number_literal)))
+  (preproc_def
+    name: (identifier)
+    value: (preproc_arg
+      (string_literal))))

@@ -3,21 +3,25 @@ Number literals
 ============================================
 
 {
-  Integer a = 1;
+    Integer a = 1;
 }
 
 ---
 
 (source_file
   (compound_statement
-    (declaration (primitive_type) (init_declarator (identifier) (number_literal)))))
+    (declaration
+      (primitive_type)
+      (init_declarator
+        (identifier)
+        (number_literal)))))
 
 ============================================
 Function calls
 ============================================
 
 void main() {
-  Print("hello\n");
+    Print("hello\n");
 }
 
 ---
@@ -25,18 +29,22 @@ void main() {
 (source_file
   (function_definition
     (primitive_type)
-    (function_declarator (identifier) (parameter_list))
+    (function_declarator
+      (identifier)
+      (parameter_list))
     (compound_statement
-      (expression_statement (call_expression
-        (identifier)
-        (argument_list (string_literal (escape_sequence))))))))
+      (expression_statement
+        (call_expression
+          (identifier)
+          (argument_list
+            (string_literal (escape_sequence))))))))
 
 ============================================
 String literals
 ============================================
 
 void main() {
-  Text foo = "hello";
+    Text foo = "hello";
 }
 
 ---
@@ -44,17 +52,21 @@ void main() {
 (source_file
   (function_definition
     (primitive_type)
-    (function_declarator (identifier) (parameter_list))
+    (function_declarator
+      (identifier)
+      (parameter_list))
     (compound_statement
-      (declaration (primitive_type) (init_declarator 
-        (identifier) (string_literal))))))
+      (declaration
+        (primitive_type)
+        (init_declarator 
+          (identifier) (string_literal))))))
 
 ============================================
 Boolean operators
 ============================================
 
 Integer main() {
-  !x || !y && !z;
+    !x || !y && !z;
 }
 
 ---
@@ -62,26 +74,32 @@ Integer main() {
 (source_file
   (function_definition
     (primitive_type)
-    (function_declarator (identifier) (parameter_list))
+    (function_declarator
+      (identifier)
+      (parameter_list))
     (compound_statement
-      (expression_statement (binary_expression
-        (unary_expression (identifier))
+      (expression_statement
         (binary_expression
-          (unary_expression (identifier))
-          (unary_expression (identifier))))))))
+          (unary_expression
+            (identifier))
+          (binary_expression
+            (unary_expression
+              (identifier))
+            (unary_expression
+              (identifier))))))))
 
 ============================================
 Assignments
 ============================================
 
 Integer main() {
-  Integer a = 1;
-  b = 2;
-  h[i] = j;
-  k += l;
-  m -= o;
-  n *= p;
-  q /= r;
+    Integer a = 1;
+    b = 2;
+    h[i] = j;
+    k += l;
+    m -= o;
+    n *= p;
+    q /= r;
 }
 
 ---
@@ -98,26 +116,32 @@ Integer main() {
         declarator: (init_declarator
           declarator: (identifier)
           value: (number_literal)))
-      (expression_statement (assignment_expression
-        left: (identifier)
-        right: (number_literal)))
-      (expression_statement (assignment_expression
-        left: (subscript_expression
-          argument: (identifier)
-          index: (identifier))
-        right: (identifier)))
-      (expression_statement (assignment_expression
-        left: (identifier)
-        right: (identifier)))
-      (expression_statement (assignment_expression
-        left: (identifier)
-        right: (identifier)))
-      (expression_statement (assignment_expression
-        left: (identifier)
-        right: (identifier)))
-      (expression_statement (assignment_expression
-        left: (identifier)
-        right: (identifier))))))
+      (expression_statement
+        (assignment_expression
+          left: (identifier)
+          right: (number_literal)))
+      (expression_statement
+        (assignment_expression
+          left: (subscript_expression
+            argument: (identifier)
+            index: (identifier))
+          right: (identifier)))
+      (expression_statement
+        (assignment_expression
+          left: (identifier)
+          right: (identifier)))
+      (expression_statement
+        (assignment_expression
+          left: (identifier)
+          right: (identifier)))
+      (expression_statement
+        (assignment_expression
+          left: (identifier)
+          right: (identifier)))
+      (expression_statement
+        (assignment_expression
+          left: (identifier)
+          right: (identifier))))))
 
 ====================================
 Comments
@@ -143,8 +167,8 @@ Math operators
 ============================================
 
 Integer main() {
-  -a / b + c * -d;
-  a++;
+    -a / b + c * -d;
+    a++;
 }
 
 ---
@@ -152,13 +176,20 @@ Integer main() {
 (source_file
   (function_definition
     (primitive_type)
-    (function_declarator (identifier) (parameter_list))
+    (function_declarator
+      (identifier)
+      (parameter_list))
     (compound_statement
-      (expression_statement (binary_expression
+      (expression_statement
         (binary_expression
-          (unary_expression (identifier))
-          (identifier))
+          (binary_expression
+            (unary_expression
+              (identifier))
+            (identifier))
         (binary_expression
           (identifier)
-          (unary_expression (identifier)))))
-      (expression_statement (update_expression (identifier))))))
+          (unary_expression
+            (identifier)))))
+      (expression_statement
+        (update_expression
+          (identifier))))))
