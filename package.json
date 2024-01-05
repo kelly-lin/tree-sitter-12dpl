@@ -5,6 +5,7 @@
   "main": "bindings/node",
   "scripts": {
     "build": "tree-sitter generate && node-gyp build",
+    "pretest": "npm run build",
     "test": "tree-sitter test",
     "test:parse": "tree-sitter parse examples/* --quiet --time"
   },
