@@ -48,7 +48,7 @@ void do_stuff(Integer arg1) {
       (return_statement (number_literal)))))
 
 ===================================================
-Function declaration with reference type parameters
+Function definition with reference type parameters
 ===================================================
 
 void do_stuff(Integer &arg1) {
