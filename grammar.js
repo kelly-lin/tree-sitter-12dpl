@@ -68,8 +68,10 @@ module.exports = grammar({
     parameter_declaration: ($) =>
       seq(
         $._declaration_specifiers,
-        optional(field("declarator", $._declarator))
+        field("declarator", choice($.pointer_declarator, $.identifier))
       ),
+
+    pointer_declarator: ($) => seq("&", $.identifier),
 
     _declaration_specifiers: ($) => field("type", $._type_specifier),
 

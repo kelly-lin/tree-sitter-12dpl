@@ -760,10 +760,14 @@
     "fields": {
       "declarator": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
-            "type": "_declarator",
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "pointer_declarator",
             "named": true
           }
         ]
@@ -805,6 +809,21 @@
       "types": [
         {
           "type": "_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pointer_declarator",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
           "named": true
         }
       ]
