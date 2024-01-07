@@ -71,7 +71,7 @@ module.exports = grammar({
         field("declarator", choice($.pointer_declarator, $.identifier))
       ),
 
-    pointer_declarator: ($) => seq("&", $.identifier),
+    pointer_declarator: ($) => seq("&", field("declarator", $.identifier)),
 
     _declaration_specifiers: ($) => field("type", $._type_specifier),
 
