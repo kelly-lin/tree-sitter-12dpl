@@ -106,7 +106,8 @@ Integer main() {
             (call_expression
               (identifier)
               (argument_list
-                (string_literal)))))))))
+                (string_literal
+                  (string_content))))))))))
 
 ============================================
 Return statements
@@ -205,7 +206,8 @@ void foo(Integer a) {
             (call_expression
               (identifier)
               (argument_list
-              (string_literal))))
+              (string_literal
+                (string_content)))))
           (case_statement
             (number_literal))
           (case_statement
@@ -258,4 +260,5 @@ Expression statements
       (call_expression
         (identifier) 
         (argument_list 
-          (string_literal))))))
+          (string_literal
+            (string_content)))))))

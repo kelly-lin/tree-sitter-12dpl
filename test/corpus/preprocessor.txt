@@ -11,7 +11,8 @@ Include directives
 
 (source_file
   (preproc_include path:
-    (string_literal))
+    (string_literal
+      (string_content)))
   (preproc_include path:
     (system_lib_string))
   (preproc_include path:
@@ -40,4 +41,5 @@ Object-like macro definitions
   (preproc_def
     name: (identifier)
     value: (preproc_arg
-      (string_literal))))
+      (string_literal
+        (string_content)))))

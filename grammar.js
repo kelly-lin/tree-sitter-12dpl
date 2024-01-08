@@ -279,7 +279,10 @@ module.exports = grammar({
       seq(
         '"',
         repeat(
-          choice(token.immediate(prec(1, /[^\\"\n]+/)), $.escape_sequence)
+          choice(
+            alias(token.immediate(prec(1, /[^\\"\n]+/)), $.string_content),
+            $.escape_sequence
+          )
         ),
         '"'
       ),
@@ -287,7 +290,22 @@ module.exports = grammar({
     system_lib_string: ($) =>
       token(seq("<", repeat(choice(/[^>\n]/, "\\>")), ">")),
 
-    escape_sequence: ($) => token(prec(1, seq("\\"))),
+    escape_sequence: (_) =>
+      token(
+        prec(
+          1,
+          seq(
+            "\\",
+            choice(
+              /[^xuU]/,
+              /\d{2,3}/,
+              /x[0-9a-fA-F]{2,}/,
+              /u[0-9a-fA-F]{4}/,
+              /U[0-9a-fA-F]{8}/
+            )
+          )
+        )
+      ),
 
     declaration: ($) =>
       seq(

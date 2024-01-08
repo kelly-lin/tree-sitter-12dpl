@@ -37,7 +37,7 @@ void main() {
         (call_expression
           (identifier)
           (argument_list
-            (string_literal (escape_sequence))))))))
+            (string_literal (string_content) (escape_sequence))))))))
 
 ============================================
 String literals
@@ -59,7 +59,35 @@ void main() {
       (declaration
         (primitive_type)
         (init_declarator 
-          (identifier) (string_literal))))))
+          (identifier)
+          (string_literal
+            (string_content)))))))
+
+================================
+Escaped string literal
+================================
+
+void main() {
+    Text foo = "\"bar\"";
+}
+
+---
+
+(source_file
+  (function_definition
+    (primitive_type)
+    (function_declarator
+      (identifier)
+      (parameter_list))
+    (compound_statement
+      (declaration
+        (primitive_type)
+        (init_declarator
+          (identifier)
+          (string_literal
+            (escape_sequence)
+            (string_content)
+            (escape_sequence)))))))
 
 ============================================
 Boolean operators
