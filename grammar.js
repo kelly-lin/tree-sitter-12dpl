@@ -273,7 +273,10 @@ module.exports = grammar({
     _type_identifier: ($) => alias($.identifier, $.primitive_type),
     _statement_identifier: ($) => alias($.identifier, $.statement_identifier),
 
-    number_literal: ($) => token(/\d+/),
+    number_literal: (_) => {
+      const decimal = /[0-9]/;
+      return token(seq(repeat1(decimal), optional(seq(".", repeat(decimal)))));
+    },
 
     string_literal: ($) =>
       seq(
