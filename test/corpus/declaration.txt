@@ -5,7 +5,7 @@ Primitive-typed variable declarations
 {
     Integer b, c = 5, d;
     Text d, e;
-    Real f, g = 2.0;
+    Real f, g = 2.0, h = 2.12345;
 }
 
 ---
@@ -26,6 +26,9 @@ Primitive-typed variable declarations
         (declaration
             type: (primitive_type)
             declarator: (identifier)
+            declarator: (init_declarator
+                declarator: (identifier)
+                value: (number_literal))
             declarator: (init_declarator
                 declarator: (identifier)
                 value: (number_literal)))))
