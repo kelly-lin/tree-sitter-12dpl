@@ -158,7 +158,7 @@
       },
       "size": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "_expression",
@@ -823,7 +823,7 @@
         "required": true,
         "types": [
           {
-            "type": "identifier",
+            "type": "_declarator",
             "named": true
           }
         ]

@@ -79,6 +79,31 @@ void do_stuff(Integer &arg1) {
             (return_statement
               (number_literal)))))
 
+
+===================================================
+Function definition with array reference type parameter
+===================================================
+
+void do_stuff(Integer &arg1[]) {
+    return;
+}
+
+---
+
+(source_file
+    (function_definition
+        (primitive_type)
+        (function_declarator 
+            (identifier)
+            (parameter_list
+                (parameter_declaration
+                    (primitive_type)
+                    (pointer_declarator
+                        (array_declarator
+                            (identifier))))))
+        (compound_statement
+            (return_statement))))
+
 ================================
 Local array declarations
 ================================
