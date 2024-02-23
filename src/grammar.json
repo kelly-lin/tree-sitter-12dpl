@@ -165,6 +165,10 @@
               },
               {
                 "type": "SYMBOL",
+                "name": "array_declarator"
+              },
+              {
+                "type": "SYMBOL",
                 "name": "identifier"
               }
             ]
@@ -1830,10 +1834,10 @@
         "members": [
           {
             "type": "FIELD",
-            "name": "declarator",
+            "name": "identifier",
             "content": {
               "type": "SYMBOL",
-              "name": "_declarator"
+              "name": "identifier"
             }
           },
           {

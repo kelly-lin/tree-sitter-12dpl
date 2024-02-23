@@ -68,7 +68,7 @@ module.exports = grammar({
     parameter_declaration: ($) =>
       seq(
         $._declaration_specifiers,
-        field("declarator", choice($.pointer_declarator, $.identifier))
+        field("declarator", choice($.pointer_declarator, $.array_declarator, $.identifier))
       ),
 
     pointer_declarator: ($) =>
@@ -331,7 +331,7 @@ module.exports = grammar({
       prec(
         1,
         seq(
-          field("declarator", $._declarator),
+          field("identifier", $.identifier),
           "[",
           field("size", optional($._expression)),
           "]"

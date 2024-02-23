@@ -146,12 +146,12 @@
     "type": "array_declarator",
     "named": true,
     "fields": {
-      "declarator": {
+      "identifier": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "_declarator",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -762,6 +762,10 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "array_declarator",
+            "named": true
+          },
           {
             "type": "identifier",
             "named": true
