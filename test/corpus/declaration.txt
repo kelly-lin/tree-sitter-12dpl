@@ -128,11 +128,19 @@ void do_stuff(Integer arg1[]) {
             (return_statement))))
 
 ================================
-Local array declarations
+Local array declarations - variable size
 ================================
 
 Integer main() {
     Integer the_buffer[the_size];
+}
+
+================================
+Local array declarations - number literal size
+================================
+
+Integer main() {
+    Integer the_buffer[6];
 }
 
 ---
@@ -146,4 +154,4 @@ Integer main() {
             (declaration 
                 (primitive_type)
                 (array_declarator 
-                    (identifier) (identifier))))))
+                    (identifier) (number_literal))))))
